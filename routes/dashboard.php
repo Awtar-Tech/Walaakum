@@ -149,6 +149,30 @@ Route::group([
             Route::delete('/{splash_screen}','SplashScreenController@destroy');
             Route::get('/option/export','SplashScreenController@export');
         });
+        Route::group([
+            'prefix'=>'categories'
+        ],function () {
+            Route::get('/','CategoryController@index');
+            Route::get('/create','CategoryController@create');
+            Route::post('/','CategoryController@store');
+            Route::get('/{category}','CategoryController@show');
+            Route::get('/{category}/edit','CategoryController@edit');
+            Route::put('/{category}','CategoryController@update');
+            Route::delete('/{category}','CategoryController@destroy');
+            Route::get('/option/export','CategoryController@export');
+        });
+        Route::group([
+            'prefix'=>'subscriptions'
+        ],function () {
+            Route::get('/','SubscriptionController@index');
+            Route::get('/create','SubscriptionController@create');
+            Route::post('/','SubscriptionController@store');
+            Route::get('/{subscription}','SubscriptionController@show');
+            Route::get('/{subscription}/edit','SubscriptionController@edit');
+            Route::put('/{subscription}','SubscriptionController@update');
+            Route::delete('/{subscription}','SubscriptionController@destroy');
+            Route::get('/option/export','SubscriptionController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------
@@ -160,7 +184,30 @@ Route::group([
         'prefix'=>'app_content',
         'namespace'=>'AppContent',
     ],function () {
-
+        Route::group([
+            'prefix'=>'advertisements'
+        ],function () {
+            Route::get('/','AdvertisementController@index');
+            Route::get('/create','AdvertisementController@create');
+            Route::post('/','AdvertisementController@store');
+            Route::get('/{advertisement}','AdvertisementController@show');
+            Route::get('/{advertisement}/edit','AdvertisementController@edit');
+            Route::put('/{advertisement}','AdvertisementController@update');
+            Route::delete('/{advertisement}','AdvertisementController@destroy');
+            Route::get('/option/export','AdvertisementController@export');
+        });
+        Route::group([
+            'prefix'=>'general_discounts'
+        ],function () {
+            Route::get('/','GeneralDiscountController@index');
+            Route::get('/create','GeneralDiscountController@create');
+            Route::post('/','GeneralDiscountController@store');
+            Route::get('/{general_discount}','GeneralDiscountController@show');
+            Route::get('/{general_discount}/edit','GeneralDiscountController@edit');
+            Route::put('/{general_discount}','GeneralDiscountController@update');
+            Route::delete('/{general_discount}','GeneralDiscountController@destroy');
+            Route::get('/option/export','GeneralDiscountController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------

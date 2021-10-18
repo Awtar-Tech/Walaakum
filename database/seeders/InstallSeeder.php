@@ -4,6 +4,7 @@ namespace Database\Seeders;
 use App\Helpers\Constant;
 use App\Models\Admin;
 use App\Models\Employee;
+use App\Models\GeneralDiscount;
 use App\Models\Link;
 use App\Models\ModelPermission;
 use App\Models\ModelRole;
@@ -82,6 +83,18 @@ class InstallSeeder extends Seeder
                         'key'=>'splash_screens',
                         'icon'=>'fit_screen'
                     ],
+                    'Categories'=>[
+                        'name'=>'Categories',
+                        'name_ar'=>'التصنيفات',
+                        'key'=>'categories',
+                        'icon'=>'category'
+                    ],
+                    'Subscriptions'=>[
+                        'name'=>'Subscriptions',
+                        'name_ar'=>'الاشتراكات',
+                        'key'=>'subscriptions',
+                        'icon'=>'card_membership'
+                    ],
                 ]
             ],
             'AppContent'=>[
@@ -89,6 +102,18 @@ class InstallSeeder extends Seeder
                 'name_ar'=>'محتوى التطبيق',
                 'key'=>'app_content',
                 'Children'=>[
+                    'Advertisements'=>[
+                        'name'=>'Advertisements',
+                        'name_ar'=>'الاعلانات',
+                        'key'=>'advertisements',
+                        'icon'=>'featured_video'
+                    ],
+                    'GeneralDiscounts'=>[
+                        'name'=>'General Discounts',
+                        'name_ar'=>'الخصومات العامة',
+                        'key'=>'general_discounts',
+                        'icon'=>'class'
+                    ],
                 ]
             ],
             'UsersManagements'=>[
