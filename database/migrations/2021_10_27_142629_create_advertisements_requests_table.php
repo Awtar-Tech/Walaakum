@@ -32,6 +32,6 @@ class CreateAdvertisementsRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisments_requests');
+        Schema::dropIfExists('advertisements_requests');
     }
 }
