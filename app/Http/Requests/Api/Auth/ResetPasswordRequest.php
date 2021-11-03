@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class ResetPasswordRequest extends ApiRequest
 {
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [
@@ -26,11 +20,7 @@ class ResetPasswordRequest extends ApiRequest
             'password' => 'required|string|min:6|confirmed',
         ];
     }
-    public function attributes(): array
-    {
-        return [];
-    }
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         if ($this->filled('email')) {
             $user = User::where('email',$this->email)->first();
@@ -39,8 +29,8 @@ class ResetPasswordRequest extends ApiRequest
             $user = User::where('mobile',$this->mobile)->first();
         }
         $passwordReset = PasswordReset::where('user_id',$user->id)->first();
-        if($passwordReset && $passwordReset->code == $this->code){
-            $user->password = $this->password;
+        if($passwordReset && $passwordReset->getCode() == $this->code){
+            $user->setPassword($this->password);
             $user->save();
             DB::table('oauth_access_tokens')->where('user_id', $user->id)->delete();
             $tokenResult = $user->createToken('Personal Access Token');

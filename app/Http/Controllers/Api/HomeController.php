@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Helpers\Constant;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Home\FaqRequest;
+use App\Http\Requests\Api\Home\InstallRequest;
+use App\Http\Requests\Api\Home\RequestAdvertisementRequest;
 use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\CountryResource;
 use App\Http\Resources\Api\Home\SplashScreensResource;
@@ -18,23 +21,17 @@ class HomeController extends Controller
 {
     use ResponseTrait;
 
-    public function install(): JsonResponse
+    public function install(InstallRequest $request): JsonResponse
     {
-        $Countries = CountryResource::collection(Country::where('active',true)->get());
-        $Cities = CityResource::collection(City::where('active',true)->get());
-        $SplashScreens = SplashScreensResource::collection(SplashScreen::where('active',true)->orderBy('order','desc')->get());
-        $Settings = Setting::pluck((app()->getLocale() =='en')?'value':'value_ar','key')->toArray();
-        return $this->successJsonResponse([],[
-            'Countries'=>$Countries,
-            'Cities'=>$Cities,
-            'SplashScreens'=>$SplashScreens,
-            'Settings'=>$Settings,
-            'Essentials'=>[
-                'UserTypes'=>Constant::USER_TYPE,
-                'ForgetPasswordTypes'=>Constant::FORGET_TYPE,
-                'VerificationTypes'=>Constant::VERIFICATION_TYPE,
-                'NotificationTypes'=>Constant::NOTIFICATION_TYPE,
-            ]
-        ]);
+        return $request->run();
+    }
+
+    public function faqs(FaqRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
+    public function request_advertisement(RequestAdvertisementRequest $request): JsonResponse
+    {
+        return $request->run();
     }
 }

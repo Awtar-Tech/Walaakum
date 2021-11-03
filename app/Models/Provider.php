@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 /**
  * @property mixed id
  * @property mixed user_id
@@ -16,6 +18,10 @@ class Provider extends Model
     protected $table = 'providers';
     protected $fillable = ['user_id','store_name','store_owner_name','commercial_register_number','commercial_register_image',];
 
+    public function provider_addresses(): HasMany
+    {
+        return $this->hasMany(ProviderAddress::class,'provider_id');
+    }
     /**
      * @return mixed
      */

@@ -10,12 +10,6 @@ use Illuminate\Http\JsonResponse;
 
 class ResendVerifyRequest extends ApiRequest
 {
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [
@@ -24,11 +18,7 @@ class ResendVerifyRequest extends ApiRequest
             'type'=>'required|in:'.Constant::VERIFICATION_TYPE_RULES
         ];
     }
-    public function attributes(): array
-    {
-        return [];
-    }
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         if ($this->type == Constant::VERIFICATION_TYPE['Mobile']) {
             $Object = User::where('mobile',$this->mobile)->first();

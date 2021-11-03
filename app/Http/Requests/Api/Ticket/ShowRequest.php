@@ -5,18 +5,10 @@ namespace App\Http\Requests\Api\Ticket;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Ticket\TicketResource;
 use App\Models\Ticket;
-use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 
-/**
- * @property mixed ticket_id
- */
 class ShowRequest extends ApiRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
     public function rules(): array
     {
         return [

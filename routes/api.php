@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'auth',
 ], function () {
-    Route::post('visitor','AuthController@visitor');
     Route::post('login','AuthController@login');
     Route::post('social_login','AuthController@social_login');
     Route::post('signup','AuthController@register');
@@ -35,8 +34,14 @@ Route::group([
         Route::post('logout','AuthController@logout');
     });
 });
-Route::get('install','HomeController@install');
 
+
+Route::group([
+    'prefix' => 'home',
+], function() {
+    Route::get('install','HomeController@install');
+    Route::get('faqs','HomeController@faqs');
+});
 Route::group([
     'prefix' => 'tickets',
 ], function() {
@@ -46,6 +51,7 @@ Route::group([
     ], function() {
         Route::get('/','TicketController@index');
         Route::get('show','TicketController@show');
+        Route::post('response','TicketController@response');
     });
 });
 Route::group([

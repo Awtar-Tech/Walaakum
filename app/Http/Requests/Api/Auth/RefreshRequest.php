@@ -8,12 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 class RefreshRequest extends ApiRequest
 {
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [
@@ -21,11 +15,7 @@ class RefreshRequest extends ApiRequest
             'device_token' => 'required|string'
         ];
     }
-    public function attributes(): array
-    {
-        return [];
-    }
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         $logged = auth()->user();
         $logged->setDeviceToken($this->device_token);

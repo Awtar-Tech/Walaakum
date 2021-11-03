@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Helpers\Functions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property integer id
@@ -26,6 +27,10 @@ class Ticket extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    public function ticket_responses(): HasMany
+    {
+        return $this->hasMany(TicketResponse::class);
     }
     /**
      * @return int

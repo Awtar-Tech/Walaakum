@@ -8,26 +8,9 @@ use Illuminate\Http\JsonResponse;
 
 class ShowRequest extends ApiRequest
 {
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    public function rules(): array
-    {
-        return [
-        ];
-    }
-    public function attributes(): array
-    {
-        return [];
-    }
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         $user = auth()->user();
-//        if (is_null($user->mobile_verified_at))
-//            return $this->failJsonResponse([__('auth.unactivated')],205);
         if (!$user->active)
             return $this->failJsonResponse([__('auth.blocked')]);
         $user->save();

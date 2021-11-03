@@ -9,12 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class PasswordRequest extends ApiRequest
 {
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [
@@ -26,7 +20,7 @@ class PasswordRequest extends ApiRequest
     {
         return [];
     }
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         $logged = auth()->user();
         if(Hash::check($this->old_password,$logged->password)){

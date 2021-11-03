@@ -7,15 +7,8 @@ use App\Http\Resources\Api\Ticket\TicketResource;
 use App\Models\Ticket;
 use Illuminate\Http\JsonResponse;
 
-/**
- * @property mixed per_page
- */
 class IndexRequest extends ApiRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
     public function run(): JsonResponse
     {
         $logged = auth()->user();

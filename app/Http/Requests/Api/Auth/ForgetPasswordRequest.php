@@ -10,12 +10,6 @@ use Illuminate\Http\JsonResponse;
 
 class ForgetPasswordRequest extends ApiRequest
 {
-
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [
@@ -24,11 +18,7 @@ class ForgetPasswordRequest extends ApiRequest
             'type' => 'required|in:'.Constant::FORGET_TYPE_RULES,
         ];
     }
-    public function attributes(): array
-    {
-        return [];
-    }
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         if ($this->type == Constant::VERIFICATION_TYPE['Mobile']) {
             $user = User::where('mobile',$this->mobile)->first();
