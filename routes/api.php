@@ -44,7 +44,7 @@ Route::group([
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
-        Route::get('request_advertisement','HomeController@request_advertisement');
+        Route::post('request_advertisement','HomeController@request_advertisement');
     });
 });
 Route::group([
