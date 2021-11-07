@@ -7,7 +7,7 @@ use App\Http\Resources\Api\Provider\ProviderResource;
 use App\Models\Provider;
 use Illuminate\Http\JsonResponse;
 
-class ShowRequest extends ApiRequest
+class MeRequest extends ApiRequest
 {
     public function run(): JsonResponse
     {

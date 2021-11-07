@@ -7,7 +7,7 @@ use App\Http\Resources\Api\Provider\ProviderAddressResource;
 use App\Models\ProviderAddress;
 use Illuminate\Http\JsonResponse;
 
-class AddressRequest extends ApiRequest
+class MyAddressRequest extends ApiRequest
 {
     public function run(): JsonResponse
     {

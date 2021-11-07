@@ -41,6 +41,11 @@ Route::group([
 ], function() {
     Route::get('install','HomeController@install');
     Route::get('faqs','HomeController@faqs');
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function() {
+        Route::get('request_advertisement','HomeController@request_advertisement');
+    });
 });
 Route::group([
     'prefix' => 'tickets',
@@ -62,4 +67,20 @@ Route::group([
     Route::post('send', 'NotificationController@send');
     Route::post('read', 'NotificationController@read');
     Route::post('read/all', 'NotificationController@read_all');
+});
+Route::group([
+    'middleware' => 'auth:api',
+    'prefix' => 'providers',
+], function() {
+    Route::get('me', 'ProviderController@me');
+    Route::post('update', 'ProviderController@update');
+    Route::group([
+        'prefix' => 'addresses',
+    ], function() {
+        Route::get('me', 'ProviderController@my_addresses');
+        Route::get('show', 'ProviderController@show_address');
+        Route::post('store', 'ProviderController@add_address');
+        Route::post('update', 'ProviderController@edit_address');
+        Route::post('delete', 'ProviderController@delete_address');
+    });
 });

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Functions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -115,7 +116,7 @@ class Provider extends Model
      */
     public function setCommercialRegisterImage($commercial_register_image): void
     {
-        $this->commercial_register_image = $commercial_register_image;
+        $this->commercial_register_image = Functions::StoreImageModel($commercial_register_image,'Providers');
     }
 
 }
