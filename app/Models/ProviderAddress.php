@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ProviderAddress extends Model
 {
-    protected $table = 'splash_screens';
+    protected $table = 'provider_addresses';
     protected $fillable = ['user_id','provider_id','country_id','city_id','address'];
 
     public function country(){
