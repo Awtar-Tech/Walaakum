@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class GeneralDiscount extends Model
 {
-    protected $table = 'advertisements';
+    protected $table = 'general_discounts';
     protected $fillable = ['name','name_ar','image','type','code','url','active'];
 
     const Types = [
