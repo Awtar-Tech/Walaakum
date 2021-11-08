@@ -10,14 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed id
  * @property mixed user_id
  * @property mixed store_name
- * @property mixed store_owner_name
- * @property mixed commercial_register_number
- * @property mixed commercial_register_image
+ * @property mixed image
+ * @property mixed about
  */
 class Provider extends Model
 {
     protected $table = 'providers';
-    protected $fillable = ['user_id','store_name','store_owner_name','commercial_register_number','commercial_register_image',];
+    protected $fillable = ['user_id','store_name','image','about'];
 
     public function provider_addresses(): HasMany
     {
@@ -70,53 +69,35 @@ class Provider extends Model
     {
         $this->store_name = $store_name;
     }
-
     /**
      * @return mixed
      */
-    public function getStoreOwnerName()
+    public function getImage()
     {
-        return $this->store_owner_name;
+        return $this->image;
     }
 
     /**
-     * @param mixed $store_owner_name
+     * @param mixed $image
      */
-    public function setStoreOwnerName($store_owner_name): void
+    public function setImage($image): void
     {
-        $this->store_owner_name = $store_owner_name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCommercialRegisterNumber()
-    {
-        return $this->commercial_register_number;
-    }
-
-    /**
-     * @param mixed $commercial_register_number
-     */
-    public function setCommercialRegisterNumber($commercial_register_number): void
-    {
-        $this->commercial_register_number = $commercial_register_number;
+        $this->image = Functions::StoreImageModel($image,'Providers');
     }
 
     /**
      * @return mixed
      */
-    public function getCommercialRegisterImage()
+    public function getAbout()
     {
-        return $this->commercial_register_image;
+        return $this->about;
     }
 
     /**
-     * @param mixed $commercial_register_image
+     * @param mixed $about
      */
-    public function setCommercialRegisterImage($commercial_register_image): void
+    public function setAbout($about): void
     {
-        $this->commercial_register_image = Functions::StoreImageModel($commercial_register_image,'Providers');
+        $this->about = $about;
     }
-
 }

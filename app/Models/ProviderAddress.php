@@ -10,11 +10,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed country_id
  * @property mixed city_id
  * @property mixed address
+ * @property mixed lat
+ * @property mixed lng
  */
 class ProviderAddress extends Model
 {
     protected $table = 'provider_addresses';
-    protected $fillable = ['user_id','provider_id','country_id','city_id','address'];
+    protected $fillable = ['user_id','provider_id','country_id','city_id','address', 'lat', 'lng'];
 
     public function country(){
         $this->belongsTo(Country::class);
@@ -116,6 +118,36 @@ class ProviderAddress extends Model
     public function setAddress($address): void
     {
         $this->address = $address;
+    }
+    /**
+     * @return mixed
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * @param mixed $lat
+     */
+    public function setLat($lat): void
+    {
+        $this->lat = $lat;
+    }
+    /**
+     * @return mixed
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * @param mixed $lat
+     */
+    public function setLng($lng): void
+    {
+        $this->lng = $lng;
     }
 
 }

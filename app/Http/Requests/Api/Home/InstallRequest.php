@@ -4,13 +4,17 @@ namespace App\Http\Requests\Api\Home;
 
 use App\Helpers\Constant;
 use App\Http\Requests\Api\ApiRequest;
+use App\Http\Resources\Api\Home\CategoriesResource;
 use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\CountryResource;
 use App\Http\Resources\Api\Home\SplashScreensResource;
+use App\Http\Resources\Api\Home\SubscriptionsResource;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Setting;
 use App\Models\SplashScreen;
+use App\Models\Subscription;
 use Illuminate\Http\JsonResponse;
 
 class InstallRequest extends ApiRequest
@@ -20,11 +24,15 @@ class InstallRequest extends ApiRequest
         $Countries = CountryResource::collection(Country::where('active',true)->get());
         $Cities = CityResource::collection(City::where('active',true)->get());
         $SplashScreens = SplashScreensResource::collection(SplashScreen::where('active',true)->orderBy('order','desc')->get());
+        $Categories = CategoriesResource::collection(Category::where('active', true)->orderBy('order', 'desc')->get());
+        $Subscriptions = SubscriptionsResource::collection(Subscription::where('active', true)->orderBy('order', 'desc')->get());
         $Settings = Setting::pluck((app()->getLocale() =='en')?'value':'value_ar','key')->toArray();
         return $this->successJsonResponse([],[
             'Countries'=>$Countries,
             'Cities'=>$Cities,
             'SplashScreens'=>$SplashScreens,
+            'Categories' => $Categories,
+            'Subscriptions' => $Subscriptions,
             'Settings'=>$Settings,
             'Essentials'=>[
                 'UserTypes'=>Constant::USER_TYPE,

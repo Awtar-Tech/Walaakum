@@ -20,6 +20,8 @@ class CreateProviderAddressesTable extends Migration
             $table->foreignId('country_id');
             $table->foreignId('city_id');
             $table->string('address')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }
