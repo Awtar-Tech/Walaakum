@@ -39,8 +39,8 @@ class GeneralDiscountController extends Controller
                 'name'=>'type',
                 'type'=>'select',
                 'data'=>[
-                    ''.GeneralDiscount::Types['MostWatch'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['MostWatch'],[],session('my_locale')),
-                    ''.GeneralDiscount::Types['NewDiscount'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['NewDiscount'],[],session('my_locale')),
+                    GeneralDiscount::Types['MostWatch'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['MostWatch'],[],session('my_locale')),
+                    GeneralDiscount::Types['NewDiscount'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['NewDiscount'],[],session('my_locale')),
                 ],
                 'is_searchable'=>true,
                 'order'=>true
@@ -77,8 +77,8 @@ class GeneralDiscountController extends Controller
                 'name'=>'type',
                 'type'=>'select',
                 'data'=>[
-                    ''.GeneralDiscount::Types['MostWatch'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['MostWatch'],[],session('my_locale')),
-                    ''.GeneralDiscount::Types['NewDiscount'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['NewDiscount'],[],session('my_locale')),
+                    GeneralDiscount::Types['MostWatch'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['MostWatch'],[],session('my_locale')),
+                    GeneralDiscount::Types['NewDiscount'] =>__('crud.GeneralDiscount.Types.'.GeneralDiscount::Types['NewDiscount'],[],session('my_locale')),
                 ],
                 'is_required'=>true
             ],
