@@ -13,7 +13,7 @@ class LoginRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'mobile' => 'required',
+            'email' => 'required',
             'password' => 'required|string',
             'device_token' => 'string|required_with:device_type',
             'device_type' => 'string|required_with:device_token',
@@ -21,7 +21,7 @@ class LoginRequest extends ApiRequest
     }
     public function run(): JsonResponse
     {
-        $credentials = request(['mobile', 'password']);
+        $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials))
             return $this->failJsonResponse([__('auth.failed')]);
         $user = $this->user();

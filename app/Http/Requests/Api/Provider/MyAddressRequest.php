@@ -11,6 +11,6 @@ class MyAddressRequest extends ApiRequest
 {
     public function run(): JsonResponse
     {
-        return $this->successJsonResponse([],ProviderAddressResource::collection(ProviderAddress::where('user_id',auth()->user()->getId())->first()),'ProviderAddresses');
+        return $this->successJsonResponse([],ProviderAddressResource::collection(ProviderAddress::where('user_id',auth()->user()->getId())->get()),'ProviderAddresses');
     }
 }

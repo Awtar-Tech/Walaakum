@@ -13,9 +13,8 @@ class UpdateRequest extends ApiRequest
     {
         return [
             'store_name' => 'string|max:255,',
-            'store_owner_name' => 'string|max:255,',
-            'commercial_register_number' => 'string|max:255,',
-            'commercial_register_image' => 'mimes:jpeg,jpg,bmp,png,',
+            'about' => 'string|max:255,',
+            'image' => 'mimes:jpeg,jpg,bmp,png,',
         ];
     }
     public function run(): JsonResponse
@@ -28,14 +27,11 @@ class UpdateRequest extends ApiRequest
         if ($this->filled('store_name')) {
             $Provider->setStoreName($this->store_name);
         }
-        if ($this->filled('store_owner_name')) {
-            $Provider->setStoreOwnerName($this->store_owner_name);
+        if ($this->filled('about')) {
+            $Provider->setAbout($this->about);
         }
-        if ($this->filled('commercial_register_number')) {
-            $Provider->setCommercialRegisterNumber($this->commercial_register_number);
-        }
-        if ($this->filled('commercial_register_image')) {
-            $Provider->setCommercialRegisterImage($this->commercial_register_image);
+        if ($this->filled('image')) {
+            $Provider->setImage($this->image);
         }
         $Provider->save();
         return $this->successJsonResponse( [__('messages.updated_successful')], new ProviderResource($Provider),'Provider');

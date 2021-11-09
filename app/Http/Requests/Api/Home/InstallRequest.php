@@ -24,8 +24,8 @@ class InstallRequest extends ApiRequest
         $Countries = CountryResource::collection(Country::where('active',true)->get());
         $Cities = CityResource::collection(City::where('active',true)->get());
         $SplashScreens = SplashScreensResource::collection(SplashScreen::where('active',true)->orderBy('order','desc')->get());
-        $Categories = CategoriesResource::collection(Category::where('active', true)->orderBy('order', 'desc')->get());
-        $Subscriptions = SubscriptionsResource::collection(Subscription::where('active', true)->orderBy('order', 'desc')->get());
+        $Categories = CategoriesResource::collection(Category::where('active', true)->get());
+        $Subscriptions = SubscriptionsResource::collection(Subscription::where('active', true)->get());
         $Settings = Setting::pluck((app()->getLocale() =='en')?'value':'value_ar','key')->toArray();
         return $this->successJsonResponse([],[
             'Countries'=>$Countries,

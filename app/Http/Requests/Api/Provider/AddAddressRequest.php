@@ -16,10 +16,13 @@ class AddAddressRequest extends ApiRequest
             'country_id'=>'required|exists:countries,id',
             'city_id'=>'required|exists:cities,id',
             'address'=>'required|string|max:255',
+            'lat' => 'required|string|max:255',
+            'lng' => 'required|string|max:255'
         ];
     }
     public function run(): JsonResponse
     {
+
         $User = auth()->user();
         $Provider = (new Provider())->where('user_id',$User->getId())->first();
         $ProviderAddress = new ProviderAddress();
@@ -28,8 +31,11 @@ class AddAddressRequest extends ApiRequest
         $ProviderAddress->setCountryId($this->country_id);
         $ProviderAddress->setCityId($this->city_id);
         $ProviderAddress->setAddress($this->address);
+        $ProviderAddress->setLat($this->lat);
+        $ProviderAddress->setLng($this->lng);
         $ProviderAddress->save();
         $ProviderAddress->refresh();
+
         return $this->successJsonResponse([__('messages.created_successful')],new ProviderAddressResource($ProviderAddress),'ProviderAddress');
     }
 }

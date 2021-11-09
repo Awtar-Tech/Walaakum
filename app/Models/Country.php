@@ -21,6 +21,7 @@ class Country extends Model
     {
         return $this->hasMany(City::class);
     }
+
     /**
      * @return mixed
      */

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 /**
  * @property mixed id
  * @property mixed user_id
@@ -18,11 +20,13 @@ class ProviderAddress extends Model
     protected $table = 'provider_addresses';
     protected $fillable = ['user_id','provider_id','country_id','city_id','address', 'lat', 'lng'];
 
-    public function country(){
-        $this->belongsTo(Country::class);
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
     }
-    public function city(){
-        $this->belongsTo(City::class);
+    public function city(): BelongsTo
+    {
+       return $this->belongsTo(City::class);
     }
     /**
      * @return mixed
@@ -143,7 +147,7 @@ class ProviderAddress extends Model
     }
 
     /**
-     * @param mixed $lat
+     * @param $lng
      */
     public function setLng($lng): void
     {

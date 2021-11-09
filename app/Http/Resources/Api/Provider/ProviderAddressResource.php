@@ -12,10 +12,12 @@ class ProviderAddressResource extends JsonResource
     {
         $Object['id'] = $this->getId();
         $Object['country_id'] = $this->getCountryId();
-        $Object['Country'] = new CountryResource($this->country);
+        $Object['Country'] = $this->country?new CountryResource($this->country):null;
         $Object['city_id'] = $this->getCityId();
-        $Object['City'] = new CityResource($this->city);
+        $Object['City'] = ($this->city) ? new CityResource($this->city):null;
         $Object['address'] = $this->getAddress();
+        $Object['lat'] = $this->getLat();
+        $Object['lng'] = $this->getLng();
         return $Object;
     }
 
