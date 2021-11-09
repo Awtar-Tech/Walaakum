@@ -25,6 +25,14 @@ class UserResource extends JsonResource
         $Object['notification_count'] = $this->notifications()->where('read_at',null)->count();
         $Object['access_token'] = $this->token;
         $Object['token_type'] = 'Bearer';
+        /*** flag here ****/
+        if ($this->getProviderType() == Constant::PROVIDER_TYPE['Individual']) {
+            if ($this->getIdentityImage() != null && $this->getMaroofCert() != null) {
+                $Object['profile_completed'] = true;
+            } else {
+                $Object['profile_completed'] = false;
+            }
+        }else{}
         return $Object;
     }
 
