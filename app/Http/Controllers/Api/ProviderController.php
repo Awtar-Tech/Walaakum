@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Provider\AddAddressRequest;
+use App\Http\Requests\Api\Provider\DeleteAddressRequest;
 use App\Http\Requests\Api\Provider\MyAddressRequest;
 use App\Http\Requests\Api\Provider\EditAddressRequest;
 use App\Http\Requests\Api\Provider\MeRequest;
@@ -45,7 +46,7 @@ class ProviderController extends Controller
         return $request->run();
     }
 
-    public function delete_address(EditAddressRequest $request): JsonResponse
+    public function delete_address(DeleteAddressRequest $request): JsonResponse
     {
         return $request->run();
     }

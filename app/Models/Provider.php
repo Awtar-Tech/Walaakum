@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed store_name
  * @property mixed image
  * @property mixed about
+ * @method Provider find(mixed $provider_id)
  */
 class Provider extends Model
 {

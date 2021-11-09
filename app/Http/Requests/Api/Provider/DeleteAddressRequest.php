@@ -18,8 +18,8 @@ class DeleteAddressRequest extends ApiRequest
     }
     public function run(): JsonResponse
     {
-        $Provider = (new Provider())->find($this->provider_address_id);
-        $Provider->delete();
+        $Provider_address = (new ProviderAddress())->find($this->provider_address_id);
+        $Provider_address->delete();
         return $this->successJsonResponse([__('messages.deleted_successfully')]);
     }
 }
