@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\User;
 
+use App\Helpers\Constant;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -26,13 +27,19 @@ class UserResource extends JsonResource
         $Object['access_token'] = $this->token;
         $Object['token_type'] = 'Bearer';
         /*** flag here ****/
-        if ($this->getProviderType() == Constant::PROVIDER_TYPE['Individual']) {
-            if ($this->getIdentityImage() != null && $this->getMaroofCert() != null) {
+        if ($this->getType() == Constant::USER_TYPE['Provider']) {
+            if ($this->getImage() != null) {
                 $Object['profile_completed'] = true;
             } else {
                 $Object['profile_completed'] = false;
             }
-        }else{}
+        }else{
+            if ($this->getImage() != null) {
+                $Object['profile_completed'] = true;
+            } else {
+                $Object['profile_completed'] = false;
+            }
+        }
         return $Object;
     }
 

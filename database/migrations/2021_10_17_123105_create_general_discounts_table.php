@@ -21,7 +21,7 @@ class CreateGeneralDiscountsTable extends Migration
             $table->string('code');
             $table->string('url');
             $table->tinyInteger('type');
-            $table->boolean('active');
+            $table->boolean('active')->default(0);
             $table->timestamps();
         });
     }

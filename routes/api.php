@@ -42,10 +42,22 @@ Route::group([
     Route::get('install','HomeController@install');
     Route::get('faqs','HomeController@faqs');
     Route::get('advertisement','AdvertisementController@index');
+    Route::get('general_discount','GeneralDiscountController@index');
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
         Route::post('request_advertisement','HomeController@request_advertisement');
+    });
+});
+Route::group([
+    'prefix' => 'general_discount',
+], function() {
+    Route::get('/','GeneralDiscountController@index');
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function() {
+        Route::post('store','GeneralDiscountController@store');
+        Route::post('update','GeneralDiscountController@update');
     });
 });
 Route::group([
