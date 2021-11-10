@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProviderAddressesTable extends Migration
+class CreateAddColumnsTo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateProviderAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('provider_addresses', function (Blueprint $table) {
+        Schema::create('add_columns_to_', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('provider_id');
-            $table->foreignId('country_id');
-            $table->foreignId('city_id');
-            $table->string('address')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreateProviderAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provider_addresses');
+        Schema::dropIfExists('add_columns_to_');
     }
 }
