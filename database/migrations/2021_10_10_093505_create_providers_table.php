@@ -17,8 +17,9 @@ class CreateProvidersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('store_name')->nullable();
-            $table->string('image')->nullable();
-            $table->string('about')->nullable();
+            $table->string('store_owner_name')->nullable();
+            $table->string('commercial_register_number')->nullable();
+            $table->string('commercial_register_image')->nullable();
             $table->timestamps();
         });
     }

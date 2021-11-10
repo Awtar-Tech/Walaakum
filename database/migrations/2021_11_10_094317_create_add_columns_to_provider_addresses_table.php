@@ -13,9 +13,9 @@ class CreateAddColumnsToProviderAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('lat')->nullable();
-            $table->string('lng')->nullable();
+        Schema::table('provider_addresses', function (Blueprint $table) {
+            $table->string('lat')->nullable()->after('address');
+            $table->string('lng')->nullable()->after('lat');
         });
     }
 
