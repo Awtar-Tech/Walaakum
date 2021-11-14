@@ -58,6 +58,7 @@ Route::group([
     ], function() {
         Route::post('store','GeneralDiscountController@store');
         Route::post('update','GeneralDiscountController@update');
+        Route::post('delete','GeneralDiscountController@delete');
     });
 });
 Route::group([

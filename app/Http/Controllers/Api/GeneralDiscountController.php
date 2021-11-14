@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\GeneralDiscount\DeleteRequest;
 use App\Http\Requests\Api\GeneralDiscount\IndexRequest;
 use App\Http\Requests\Api\GeneralDiscount\StoreRequest;
 use App\Http\Requests\Api\GeneralDiscount\UpdateRequest;
@@ -19,6 +20,10 @@ class GeneralDiscountController extends Controller
         return $request->run();
     }
     public function update(UpdateRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
+    public function delete(DeleteRequest $request):JsonResponse
     {
         return $request->run();
     }
