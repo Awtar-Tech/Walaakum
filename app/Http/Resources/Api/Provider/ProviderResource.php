@@ -10,7 +10,7 @@ class ProviderResource extends JsonResource
     {
         $Object['id'] = $this->getId();
         $Object['store_name'] = $this->getStoreName();
-        $Object['image'] = $this->getImage();
+        $Object['image'] = asset($this->getImage());
         $Object['about'] = $this->getAbout();
         $Object['ProviderAddresses'] = ProviderAddressResource::collection($this->provider_addresses);
         return $Object;

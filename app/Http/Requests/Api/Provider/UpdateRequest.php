@@ -30,7 +30,7 @@ class UpdateRequest extends ApiRequest
         if ($this->filled('about')) {
             $Provider->setAbout($this->about);
         }
-        if ($this->filled('image')) {
+        if ($this->image) {
             $Provider->setImage($this->image);
         }
         $Provider->save();
