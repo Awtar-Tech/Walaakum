@@ -3,6 +3,8 @@
 namespace App\Http\Resources\Api\User;
 
 use App\Helpers\Constant;
+use App\Http\Resources\Api\Provider\ProviderResource;
+use App\Models\Provider;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -13,7 +15,7 @@ class UserResource extends JsonResource
         $this->token = $token;
         parent::__construct($resource);
     }
-    public function toArray($request): array
+    public function toArray($request) :array
     {
         $Object['id'] = $this->getId();
         $Object['name'] = $this->getName();
@@ -28,13 +30,11 @@ class UserResource extends JsonResource
         $Object['token_type'] = 'Bearer';
         /*** flag here ****/
         if ($this->getType() == Constant::USER_TYPE['Provider']) {
-            if ($this->getImage() != null) {
-                $Object['profile_completed'] = true;
-            } else {
-                $Object['profile_completed'] = false;
-            }
-        }else{
-            if ($this->getImage() != null) {
+            $provider = Provider::where('user_id', $Object['id'])->first();
+            $provider_image = $provider->image;
+            $provider_store_name = $provider->store_name;
+            $provider_about = $provider->about;
+            if ($provider_image != null && $provider_store_name != null && $provider_about != null) {
                 $Object['profile_completed'] = true;
             } else {
                 $Object['profile_completed'] = false;
