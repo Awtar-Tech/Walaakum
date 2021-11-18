@@ -24,6 +24,7 @@ Route::group([
     Route::post('reset_password','AuthController@reset_password');
     Route::get('resend_verify', 'AuthController@resend_verify');
     Route::post('verify', 'AuthController@verify');
+    Route::post('check_reset_code','AuthController@check_reset_code');
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
@@ -50,18 +51,6 @@ Route::group([
     });
 });
 Route::group([
-    'prefix' => 'general_discount',
-], function() {
-    Route::get('/','GeneralDiscountController@index');
-    Route::group([
-        'middleware' => 'auth:api'
-    ], function() {
-        Route::post('store','GeneralDiscountController@store');
-        Route::post('update','GeneralDiscountController@update');
-        Route::post('delete','GeneralDiscountController@delete');
-    });
-});
-Route::group([
     'prefix' => 'tickets',
 ], function() {
     Route::post('store','TicketController@store');
@@ -83,18 +72,32 @@ Route::group([
     Route::post('read/all', 'NotificationController@read_all');
 });
 Route::group([
-    'middleware' => 'auth:api',
     'prefix' => 'providers',
 ], function() {
-    Route::get('me', 'ProviderController@me');
-    Route::post('update', 'ProviderController@update');
+    Route::get('/', 'ProviderController@index');
     Route::group([
-        'prefix' => 'addresses',
+        'middleware' => 'auth:api'
     ], function() {
-        Route::get('me', 'ProviderController@my_addresses');
-        Route::get('show', 'ProviderController@show_address');
-        Route::post('store', 'ProviderController@add_address');
-        Route::post('update', 'ProviderController@edit_address');
-        Route::post('delete', 'ProviderController@delete_address');
+        Route::get('me', 'ProviderController@me');
+        Route::post('update', 'ProviderController@update');
+        Route::group([
+            'prefix' => 'addresses',
+        ], function() {
+            Route::get('me', 'ProviderController@my_addresses');
+            Route::get('show', 'ProviderController@show_address');
+            Route::post('store', 'ProviderController@add_address');
+            Route::post('update', 'ProviderController@edit_address');
+            Route::post('delete', 'ProviderController@delete_address');
+        });
     });
 });
+Route::group([
+    'prefix' => 'discounts',
+    'middleware' => 'auth:api'
+], function() {
+    Route::get('/','DiscountController@index');
+    Route::post('store','DiscountController@store');
+    Route::post('update','DiscountController@update');
+    Route::post('delete','DiscountController@delete');
+});
+

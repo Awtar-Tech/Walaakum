@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\Functions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -12,16 +13,21 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed store_name
  * @property mixed image
  * @property mixed about
+ * @property mixed category_id
  * @method Provider find(mixed $provider_id)
  */
 class Provider extends Model
 {
     protected $table = 'providers';
-    protected $fillable = ['user_id','store_name','image','about'];
+    protected $fillable = ['user_id','store_name','image','about', 'category_id'];
 
     public function provider_addresses(): HasMany
     {
         return $this->hasMany(ProviderAddress::class,'provider_id');
+    }
+    public function categories(): BelongsTo
+    {
+        return $this->belongsTo(Category::class,'category_id');
     }
     /**
      * @return mixed
@@ -100,5 +106,21 @@ class Provider extends Model
     public function setAbout($about): void
     {
         $this->about = $about;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryId()
+    {
+        return $this->category_id;
+    }
+
+    /**
+     * @param mixed $category_id
+     */
+    public function setCategoryId($category_id): void
+    {
+        $this->category_id = $category_id;
     }
 }

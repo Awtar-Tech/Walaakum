@@ -14,7 +14,8 @@ class AddActiveToProvidersTable extends Migration
     public function up()
     {
         Schema::table('providers', function (Blueprint $table) {
-            $table->string('active')->default(true)->after('user_id');
+            $table->boolean('active')->default(true)->after('user_id');
+            $table->unsignedInteger('category_id')->after('user_id');
         });
     }
 

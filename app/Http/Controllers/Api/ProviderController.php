@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Provider\AddAddressRequest;
 use App\Http\Requests\Api\Provider\DeleteAddressRequest;
+use App\Http\Requests\Api\Provider\IndexRequest;
 use App\Http\Requests\Api\Provider\MyAddressRequest;
 use App\Http\Requests\Api\Provider\EditAddressRequest;
 use App\Http\Requests\Api\Provider\MeRequest;
@@ -14,6 +15,10 @@ use Illuminate\Http\JsonResponse;
 
 class ProviderController extends Controller
 {
+    public function index(IndexRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
 
     public function me(MeRequest $request): JsonResponse
     {

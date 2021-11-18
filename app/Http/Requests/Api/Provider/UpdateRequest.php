@@ -15,6 +15,7 @@ class UpdateRequest extends ApiRequest
             'store_name' => 'string|max:255,',
             'about' => 'string|max:255,',
             'image' => 'mimes:jpeg,jpg,bmp,png,',
+            'category_id'=> 'nullable|exists:categories,id'
         ];
     }
     public function run(): JsonResponse
@@ -32,6 +33,9 @@ class UpdateRequest extends ApiRequest
         }
         if ($this->image) {
             $Provider->setImage($this->image);
+        }
+        if ($this->filled('category_id')) {
+            $Provider->setCategoryId($this->category_id);
         }
         $Provider->save();
         return $this->successJsonResponse( [__('messages.updated_successful')], new ProviderResource($Provider),'Provider');

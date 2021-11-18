@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\Auth\CheckResetCodeRequest;
 use App\Http\Requests\Api\Auth\ForgetPasswordRequest;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\LogoutRequest;
