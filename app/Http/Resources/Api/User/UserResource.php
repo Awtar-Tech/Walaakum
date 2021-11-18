@@ -31,12 +31,16 @@ class UserResource extends JsonResource
         /*** flag here ****/
         if ($this->getType() == Constant::USER_TYPE['Provider']) {
             $provider = Provider::where('user_id', $Object['id'])->first();
-            $provider_image = $provider->image;
-            $provider_store_name = $provider->store_name;
-            $provider_about = $provider->about;
-            if ($provider_image != null && $provider_store_name != null && $provider_about != null) {
-                $Object['profile_completed'] = true;
-            } else {
+            if($provider){
+                $provider_image = $provider->image;
+                $provider_store_name = $provider->store_name;
+                $provider_about = $provider->about;
+                if ($provider_image != null && $provider_store_name != null && $provider_about != null) {
+                    $Object['profile_completed'] = true;
+                } else {
+                    $Object['profile_completed'] = false;
+                }
+            }else {
                 $Object['profile_completed'] = false;
             }
         }
