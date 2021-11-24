@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Provider\AddAddressRequest;
 use App\Http\Requests\Api\Provider\DeleteAddressRequest;
+use App\Http\Requests\Api\Provider\FavoriteRequest;
 use App\Http\Requests\Api\Provider\IndexRequest;
 use App\Http\Requests\Api\Provider\MyAddressRequest;
 use App\Http\Requests\Api\Provider\EditAddressRequest;
 use App\Http\Requests\Api\Provider\MeRequest;
 use App\Http\Requests\Api\Provider\ShowAddressRequest;
+use App\Http\Requests\Api\Provider\ToggleFavoriteRequest;
 use App\Http\Requests\Api\Provider\UpdateRequest;
 use Illuminate\Http\JsonResponse;
 
@@ -20,6 +22,14 @@ class ProviderController extends Controller
         return $request->run();
     }
 
+    public function favorites(FavoriteRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
+    public function toggle_favorite(ToggleFavoriteRequest $request): JsonResponse
+    {
+        return $request->persist();
+    }
     public function me(MeRequest $request): JsonResponse
     {
         return $request->run();

@@ -6,6 +6,7 @@ use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Provider\ProviderResource;
 use App\Models\Provider;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Storage;
 
 class UpdateRequest extends ApiRequest
 {

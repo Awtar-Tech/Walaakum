@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\Api\Provider;
 
+use App\Models\Favorite;
+use http\Exception;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProviderResource extends JsonResource
@@ -14,7 +16,14 @@ class ProviderResource extends JsonResource
         $Object['about'] = $this->getAbout();
         $Object['category_id'] = $this->getCategoryId();
         $Object['ProviderAddresses'] =  ProviderAddressResource::collection($this->provider_addresses);
+        $is_favorite = false;
+        if (auth('api')->check()) {
+            $is_favorite = (bool)Favorite::where('user_id',auth()->user()->getId())->where('provider_id',$this->id)->first();
+        }
+        $Object['is_favorite'] = $is_favorite;
         return $Object;
+
+
     }
 
 }

@@ -78,6 +78,8 @@ Route::group([
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
+        Route::get('favorites', 'ProviderController@favorites');
+        Route::post('toggle_favorite', 'ProviderController@toggle_favorite');
         Route::get('me', 'ProviderController@me');
         Route::post('update', 'ProviderController@update');
         Route::group([
