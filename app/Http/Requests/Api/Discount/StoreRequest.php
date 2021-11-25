@@ -5,6 +5,7 @@ namespace App\Http\Requests\Api\Discount;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\General\DiscountResource;
 use App\Models\Discount;
+use App\Models\Provider;
 use Illuminate\Http\JsonResponse;
 
 class StoreRequest extends ApiRequest
@@ -20,6 +21,8 @@ class StoreRequest extends ApiRequest
     {
         $discount =new  Discount();
         $User = auth()->user();
+        $provider = Provider::where('user_id', $User->getId())->first();
+        $discount->setProviderId($provider->getId());
         $discount->setAmount($this->amount);
         $discount->setDescription($this->description);
         $discount->save();

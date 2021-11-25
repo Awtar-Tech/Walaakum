@@ -25,6 +25,10 @@ class Provider extends Model
     {
         return $this->hasMany(ProviderAddress::class,'provider_id');
     }
+    public function discounts(): HasMany
+    {
+        return $this->hasMany(Discount::class,'provider_id');
+    }
     public function categories(): BelongsTo
     {
         return $this->belongsTo(Category::class,'category_id');

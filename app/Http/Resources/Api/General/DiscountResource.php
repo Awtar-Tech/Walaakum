@@ -11,6 +11,7 @@ class DiscountResource extends JsonResource
     {
         $Objects = array();
         $Objects['id'] = $this->getId();
+        $Objects['provider_id'] = $this->getProviderId();
         $Objects['amount'] = $this->getAmount();
         $Objects['description'] = $this->getDescription();
         return $Objects;

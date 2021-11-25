@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property mixed id
+ * @property mixed provider_id
  * @property mixed amount
  * @property mixed description
  * @property boolean active
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Discount extends Model
 {
     protected $table = 'discounts';
-    protected $fillable = ['amount','description','active'];
+    protected $fillable = ['provider_id','amount','description','active'];
 
     /**
      * @return mixed
@@ -30,6 +31,21 @@ class Discount extends Model
     public function setId($id): void
     {
         $this->id = $id;
+    }
+    /**
+     * @return mixed
+     */
+    public function getProviderId()
+    {
+        return $this->provider_id;
+    }
+
+    /**
+     * @param mixed $provider_id
+     */
+    public function setProviderId($provider_id): void
+    {
+        $this->provider_id = $provider_id;
     }
 
     /**
