@@ -44,14 +44,6 @@
                             <div class="card-content table-responsive">
                                 <table class="table table-hover">
                                     <tr>
-                                        <th style="border-top: none !important;">{{__('crud.Country.crud_the_name')}}</th>
-                                        <td style="border-top: none !important;">{{app()->getLocale() == 'ar'?$Object->country->getNameAr():$Object->country->getName()}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th style="border-top: none !important;">{{__('crud.City.crud_the_name')}}</th>
-                                        <td style="border-top: none !important;">{{app()->getLocale() == 'ar'?$Object->city->getNameAr():$Object->city->getName()}}</td>
-                                    </tr>
-                                    <tr>
                                         <th style="border-top: none !important;">{{__('crud.'.$lang.'.address')}}</th>
                                         <td style="border-top: none !important;">{{$Object->address}}</td>
                                     </tr>
