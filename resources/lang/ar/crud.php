@@ -36,6 +36,28 @@ return [
             'active_mobile_email'=>'تفعيل الايميل والجوال'
         ]
     ],
+    'Providers'=>[
+        'crud_names' => 'المزودين',
+        'crud_name' => 'مزود',
+        'crud_the_name' => 'المزود',
+        'name' => 'الاسم',
+        'email' => 'البريد الالكتروني',
+        'mobile' => 'رقم الجوال',
+        'avatar' => 'الصورة',
+        'type' => 'نوع البروفايل',
+        'balance' => 'الرصيد',
+        'address' => 'العنوان',
+        'app_locale' => 'اللغة',
+        'active' => 'الحالة',
+        'created_at' => 'تاريخ الإنشاء',
+        'Types'=>[
+            ''.Constant::USER_TYPE['Customer']=>'عميل',
+            ''.Constant::USER_TYPE['Provider']=>'مزود',
+        ],
+        'Links'=>[
+            'active_mobile_email'=>'تفعيل الايميل والجوال'
+        ]
+    ],
     'Setting'=>[
         'crud_names' => 'الإعدادات',
         'crud_name' => 'اعداد',
@@ -157,9 +179,9 @@ return [
         'active' => 'الحالة',
     ],
     'Subscription'=>[
-        'crud_names' => 'الاشتراكات',
-        'crud_name' => 'اشتراك',
-        'crud_the_name' => 'الاشتراك',
+        'crud_names' => 'الباقات',
+        'crud_name' => 'باقة',
+        'crud_the_name' => 'الباقة',
         'name' => 'الاسم انجليزي',
         'name_ar' => 'الاسم عربي',
         'description' => 'الوصف',
@@ -183,6 +205,27 @@ return [
         'Types'=>[
             ''.\App\Models\GeneralDiscount::Types['MostWatch']=>'الأكثر مشاهدة',
             ''.\App\Models\GeneralDiscount::Types['NewDiscount']=>'الخصومات الجديدة',
+        ]
+    ],
+    'Transaction'=>[
+        'crud_names' => 'الحركات المالية',
+        'crud_name' => 'حركة مالية',
+        'crud_the_name' => 'الحركة المالية',
+        'user_id' => 'المستخدم',
+        'value' => 'القيمة',
+        'type' => 'نوع الحركة',
+        'Types' => [
+            ''.Constant::TRANSACTION_TYPES['Deposit']=>'إيداع',
+            ''.Constant::TRANSACTION_TYPES['Withdraw']=>'سحب',
+            ''.Constant::TRANSACTION_TYPES['Holding']=>'معلق',
+        ],
+        'payment_token' => 'كود الدفع',
+        'ref_id' => 'العملية المرتبطة',
+        'created_at' => 'التاريخ',
+        'status' => 'الحالة',
+        'Statuses'=>[
+            ''.Constant::TRANSACTION_STATUS['Pending']=>'بالإنتظار',
+            ''.Constant::TRANSACTION_STATUS['Paid']=>'مدفوع',
         ]
     ],
 ];

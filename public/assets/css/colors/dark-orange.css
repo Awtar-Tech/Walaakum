@@ -1,0 +1,12 @@
+:root {
+    --main-bg-color: rgba(225, 80, 51, 0.93);
+    --main-bg-color-a: rgba(225, 80, 51, 0.82);
+    --main-bg-color-a1: rgba(225, 80, 51, 0.35);
+    --main-bg-color-a2: rgba(225, 80, 51, 0.15);
+    --main-bg-color-dark: rgba(0, 0, 0, 0.12);
+    --main-bg-color-light: #fff;
+    --main-bg-image: rgba(225, 80, 51, 0.7);
+    --main-bg-image2: #e15033;
+    --main-bg-image-dark: #D2D2D2;
+    --main-bg-image-dark2: #D2D2D2;
+}

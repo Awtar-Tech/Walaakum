@@ -197,6 +197,18 @@ Route::group([
             Route::get('/option/export','AdvertisementController@export');
         });
         Route::group([
+            'prefix'=>'transactions'
+        ],function () {
+            Route::get('/','TransactionController@index');
+            Route::get('/create','TransactionController@create');
+            Route::post('/','TransactionController@store');
+            Route::get('/{transaction}','TransactionController@show');
+            Route::get('/{transaction}/edit','TransactionController@edit');
+            Route::put('/{transaction}','TransactionController@update');
+            Route::delete('/{transaction}','TransactionController@destroy');
+            Route::get('/option/export','TransactionController@export');
+        });
+        Route::group([
             'prefix'=>'general_discounts'
         ],function () {
             Route::get('/','GeneralDiscountController@index');
@@ -232,6 +244,19 @@ Route::group([
             Route::get('/{user}/activation','UserController@activation');
             Route::delete('/{user}','UserController@destroy');
             Route::get('/{user}/active_mobile_email','UserController@active_mobile_email');
+        });
+        Route::group([
+            'prefix'=>'providers'
+        ],function () {
+            Route::get('/','ProviderController@index');
+            Route::get('/create','ProviderController@create');
+            Route::post('/','ProviderController@store');
+            Route::get('/{provider}','ProviderController@show');
+            Route::patch('/update/password',  'ProviderController@updatePassword');
+            Route::get('/option/export','ProviderController@export');
+            Route::get('/{provider}/activation','ProviderController@activation');
+            Route::delete('/{provider}','ProviderController@destroy');
+            Route::get('/{provider}/active_mobile_email','ProviderController@active_mobile_email');
         });
         Route::group([
             'prefix'=>'tickets'

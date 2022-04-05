@@ -35,6 +35,28 @@ return [
             'active_mobile_email'=>'Active Mobile And Email'
         ]
     ],
+    'Providers'=>[
+        'crud_names' => 'Providers',
+        'crud_name' => 'Provider',
+        'crud_the_name' => 'The Provider',
+        'name' => 'Name',
+        'email' => 'E-Mail',
+        'mobile' => 'Mobile',
+        'avatar' => 'Avatar',
+        'type' => 'Type',
+        'balance' => 'Balance',
+        'address' => 'Address',
+        'app_locale' => 'App Locale',
+        'active' => 'Status',
+        'created_at' => 'Created At',
+        'Types'=>[
+            ''.Constant::USER_TYPE['Customer']=>'Customer',
+            ''.Constant::USER_TYPE['Provider']=>'Provider',
+        ],
+        'Links'=>[
+            'active_mobile_email'=>'Active Mobile And Email'
+        ]
+    ],
     'Setting'=>[
         'crud_names' => 'Settings',
         'crud_name' => 'Setting',
@@ -182,6 +204,27 @@ return [
         'Types'=>[
             ''.\App\Models\GeneralDiscount::Types['MostWatch']=>'Most Watched',
             ''.\App\Models\GeneralDiscount::Types['NewDiscount']=>'New Discounts',
+        ]
+    ],
+    'Transaction'=>[
+        'crud_names' => 'Transactions',
+        'crud_name' => 'Transaction',
+        'crud_the_name' => 'The Transaction',
+        'user_id' => 'User',
+        'value' => 'Value',
+        'type' => 'Type',
+        'Types' => [
+            ''.Constant::TRANSACTION_TYPES['Deposit']=>'Deposit',
+            ''.Constant::TRANSACTION_TYPES['Withdraw']=>'Withdraw',
+            ''.Constant::TRANSACTION_TYPES['Holding']=>'Hold',
+        ],
+        'payment_token' => 'Payment Token',
+        'ref_id' => 'References Operation',
+        'created_at' => 'Date',
+        'status' => 'Status',
+        'Statuses'=>[
+            ''.Constant::TRANSACTION_STATUS['Pending']=>'Pending',
+            ''.Constant::TRANSACTION_STATUS['Paid']=>'Paid',
         ]
     ],
 ];

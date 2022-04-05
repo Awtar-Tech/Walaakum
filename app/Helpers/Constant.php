@@ -33,4 +33,24 @@ class Constant
         'Provider'=>2
     ];
     const USER_TYPE_RULES = '1,2';
+
+    const PAYMENT_METHOD = [
+        'BankTransfer'=>1,
+        'Cash'=>2,
+    ];
+    const PAYMENT_METHOD_RULES = '1,2';
+    const TRANSACTION_STATUS = [
+        'Pending'=>1,
+        'Paid'=>2,
+    ];
+    const REQUEST_REFUND_STATUSES = [
+        'Pending'=>1,
+        'Success'=>2,
+        'Fail'=>3,
+    ];
+    const TRANSACTION_TYPES = [
+        'Deposit'=>1,
+        'Withdraw'=>2,
+        'Holding'=>3,
+    ];
 }

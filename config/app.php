@@ -129,7 +129,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'color' => env('APP_COLOR', 'blue'),
+    'color' => env('APP_COLOR', 'dark-orange'),
 
     'notification_key' => env('NOTIFICATION_KEY', ''),
 

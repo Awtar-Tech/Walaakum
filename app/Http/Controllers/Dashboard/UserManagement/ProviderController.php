@@ -8,14 +8,14 @@ use App\Http\Requests\Admin\UserManagement\User\ActiveEmailMobileRequest;
 use App\Models\User;
 use App\Traits\AhmedPanelTrait;
 
-class UserController extends Controller
+class ProviderController extends Controller
 {
     use AhmedPanelTrait;
 
     public function setup()
     {
-        $this->setRedirect('dashboard/user_managements/users');
-        $this->setEntity(((new User())->where('type', Constant::USER_TYPE['Customer'])));
+        $this->setRedirect('dashboard/user_managements/providers');
+        $this->setEntity(((new User())->where('type',Constant::USER_TYPE['Provider'])));
         $this->setViewShow('Dashboard.UserManagement.User.show');
         $this->setTable('users');
         $this->setLang('User');

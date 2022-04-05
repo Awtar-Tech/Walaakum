@@ -91,7 +91,7 @@ class InstallSeeder extends Seeder
                     ],
                     'Subscriptions'=>[
                         'name'=>'Subscriptions',
-                        'name_ar'=>'الاشتراكات',
+                        'name_ar'=>'الباقات',
                         'key'=>'subscriptions',
                         'icon'=>'card_membership'
                     ],
@@ -114,6 +114,12 @@ class InstallSeeder extends Seeder
                         'key'=>'general_discounts',
                         'icon'=>'class'
                     ],
+                    'UsersSubscriptions'=>[
+                        'name'=>'Users Subscriptions',
+                        'name_ar'=>'اشتراكات المستخدمين',
+                        'key'=>'transactions',
+                        'icon'=>'class'
+                    ],
                 ]
             ],
             'UsersManagements'=>[
@@ -125,6 +131,12 @@ class InstallSeeder extends Seeder
                         'name'=>'Users',
                         'name_ar'=>'المستخدمين',
                         'key'=>'users',
+                        'icon'=>'group'
+                    ],
+                    'Providers'=>[
+                        'name'=>'Providers',
+                        'name_ar'=>'المزودين',
+                        'key'=>'providers',
                         'icon'=>'group'
                     ],
                     'Tickets'=>[

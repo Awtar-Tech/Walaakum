@@ -102,4 +102,20 @@ Route::group([
     Route::post('update','DiscountController@update');
     Route::post('delete','DiscountController@delete');
 });
+Route::group([
+    'prefix' => 'subscriptions',
+    'middleware' => 'auth:api'
+], function() {
+    Route::get('/','SubscriptionsController@index');
+    Route::post('store','SubscriptionsController@store');
+});
+Route::group([
+    'prefix' => 'transactions',
+], function() {
+    Route::get('/', 'TransactionController@index');
+    Route::get('my_balance', 'TransactionController@my_balance');
+    Route::post('generate_checkout', 'TransactionController@generate_checkout');
+    Route::get('check_payment', 'TransactionController@check_payment');
+    Route::post('request_refund', 'TransactionController@request_refund');
+});
 
