@@ -305,8 +305,8 @@ class Functions
         }
     }
     public static function AuthSplitHyperPay(){
-        $email = 'faisal-hmood@outlook.com';
-        $password = 'passion2020$';
+        $email = 'walaokom@gmail.com';
+        $password = 'walaokom-admin@123';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://splits.sandbox.hyperpay.com/api/v1/login");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -331,8 +331,8 @@ class Functions
     }
 
     public static function Payout($iban,$swift_code,$name,$amount,$address_1,$address_2,$address_3,$request_refund_id){
-        $email = 'faisal-hmood@outlook.com';
-        $password = 'passion2020$';
+        $email = 'walaokom@gmail.com';
+        $password = 'walaokom-admin@123';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://splits.sandbox.hyperpay.com/api/v1/login");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
