@@ -44,7 +44,7 @@
                     <h4 class="title">  {{__('dashboard.Home.n_send_general')}} </h4>
                 </div>
                 <div class="card-content">
-                    <form action="{{url('uni-dashboard/notification/send')}}" method="post">
+                    <form action="{{url('dashboard/notification/send')}}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 btn-group required">
