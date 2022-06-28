@@ -41,7 +41,7 @@ class HomeController extends Controller
         foreach ($UsersChunks as $UsersChunk){
             Functions::sendNotifications($UsersChunk,$Title,$Message,null,Constant::NOTIFICATION_TYPE['General'],false);
         }
-        return redirect()->back()->with('status', __('admin.messages.notification_sent'));
+        return redirect()->back()->with('status', __('dashboard.messages.notification_sent'));
     }
     public function delete_media(DeleteMediaRequest $request){
         return $request->preset();
