@@ -57,7 +57,7 @@ trait AhmedPanelTrait
 
     public function wrongData()
     {
-        return redirect($this->getRedirect())->withErrors(__('admin.messages.wrong_data'));
+        return redirect($this->getRedirect())->withErrors(__('dashboard.messages.wrong_data'));
     }
 
     /**
